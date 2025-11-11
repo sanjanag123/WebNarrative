@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: webnarrative
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    # Note: For persistent file storage, you'll need to use Render's persistent disk
+    # or integrate with cloud storage (S3, Cloudinary, etc.)
+    # Uncomment the following for persistent disk (paid feature):
+    # disk:
+    #   name: webnarrative-disk
+    #   mountPath: /opt/render/project/src/uploads
+    #   sizeGB: 1
+

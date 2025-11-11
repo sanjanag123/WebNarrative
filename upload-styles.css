@@ -1,0 +1,373 @@
+/* Upload page specific styles */
+.upload-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.upload-btn {
+    background-color: #ff2d75;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: Verdana, sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #e02563;
+}
+
+.files-display {
+    margin: 40px 0;
+    min-height: 200px;
+}
+
+.no-files {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin: 40px 0;
+}
+
+/* Thumbnail grid for images */
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.file-item {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.file-item.image-item {
+    padding: 0;
+    aspect-ratio: 1;
+}
+
+.file-item.non-image {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+}
+
+.file-icon {
+    font-size: 24px;
+    width: 40px;
+    text-align: center;
+}
+
+.file-info {
+    flex: 1;
+}
+
+.file-name {
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #000;
+    font-size: 14px;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.file-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.file-preview-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 0;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 90vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-image-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 70vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-delete-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    z-index: 10;
+}
+
+.modal-delete-btn:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
+.modal-info {
+    padding: 20px;
+    max-width: 800px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: #000;
+}
+
+.modal-caption-section {
+    margin-bottom: 20px;
+}
+
+.modal-caption-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+.modal-caption-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.modal-caption-input:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.modal-comments-section {
+    margin-top: 20px;
+}
+
+.modal-comments-label {
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+    color: #333;
+}
+
+.modal-comments-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.comment-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border-left: 3px solid #ff2d75;
+}
+
+.comment-text {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.modal-comment-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.modal-save-btn {
+    background-color: #ff2d75;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-save-btn:hover {
+    background-color: #e02563;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.back-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.back-link {
+    color: #ff2d75;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.file-download {
+    font-size: 20px;
+    text-decoration: none;
+    padding: 8px;
+    transition: transform 0.2s ease;
+}
+
+.file-download:hover {
+    transform: scale(1.2);
+}
+
+.uploading-indicator {
+    margin-top: 16px;
+    color: #ff2d75;
+    font-weight: 600;
+}
+
+.success-message {
+    margin-top: 16px;
+    color: #28a745;
+    font-weight: 600;
+    padding: 8px;
+    background: #d4edda;
+    border-radius: 4px;
+}
+
+.error-message {
+    margin-top: 16px;
+    color: #dc3545;
+    font-weight: 600;
+    padding: 8px;
+    background: #f8d7da;
+    border-radius: 4px;
+}

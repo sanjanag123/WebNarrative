@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country - Upload Files</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/upload-styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1 class="title" id="countryTitle">Loading...</h1>
+
+        <div class="upload-section">
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Upload File</button>
+            <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt,.mp4,.mp3" multiple style="display: none;">
+        </div>
+
+        <div class="files-display" id="filesDisplay">
+            <p class="no-files">Select a country to view uploads.</p>
+        </div>
+
+        <div class="back-section">
+            <a href="/" class="back-link">← Back to World Map</a>
+        </div>
+    </main>
+
+    <script src="/countries.js"></script>
+    <script>
+        function resolveCountryFromPath() {
+            const pathSegments = window.location.pathname.split('/').filter(Boolean);
+            const countrySegmentIndex = pathSegments.indexOf('country');
+            let slug = null;
+
+            if (countrySegmentIndex > -1 && pathSegments.length > countrySegmentIndex + 1) {
+                slug = decodeURIComponent(pathSegments[countrySegmentIndex + 1]);
+            }
+
+            if (!slug) {
+                const params = new URLSearchParams(window.location.search);
+                slug = params.get('country');
+            }
+
+            if (!slug) {
+                return null;
+            }
+
+            const normalizedSlug = slug.toLowerCase();
+            return window.countryBySlug ? window.countryBySlug[normalizedSlug] : null;
+        }
+
+        function updatePageForCountry(countryInfo) {
+            if (!countryInfo) {
+                document.title = 'Country Not Found';
+                document.getElementById('countryTitle').textContent = 'Country Not Found';
+                document.getElementById('filesDisplay').innerHTML = '<p class="error-message">We could not find this country. Please return to the world map.</p>';
+                document.querySelector('.upload-section').style.display = 'none';
+                return;
+            }
+
+            const flag = countryInfo.flag ? countryInfo.flag + ' ' : '';
+            document.title = `${countryInfo.name} - Upload Files`;
+            document.getElementById('countryTitle').textContent = `${flag}${countryInfo.name}`;
+            document.body.dataset.countrySlug = countryInfo.slug;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const countryInfo = resolveCountryFromPath();
+            updatePageForCountry(countryInfo);
+        });
+    </script>
+    <script src="/upload-script.js"></script>
+</body>
+</html>
